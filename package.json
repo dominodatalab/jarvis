@@ -19,7 +19,7 @@
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^3.4.2",
     "hubot-gif-locker": "*",
-    "hubot-yardmaster": "git://github.com/hacklanta/hubot-yardmaster#build-with-parameters"
+    "hubot-yardmaster": "git://github.com/hacklanta/hubot-yardmaster#master"
   },
   "engines": {
     "node": "0.10.x"
