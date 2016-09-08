@@ -20,7 +20,7 @@
     "hubot-slack": "^3.4.2",
     "hubot-gif-locker": "*",
     "hubot-yardmaster": "1.0.30",
-    "hubot-jira": "*"
+    "underscore": "*"
   },
   "engines": {
     "node": "0.10.x"
