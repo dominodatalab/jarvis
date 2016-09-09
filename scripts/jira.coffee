@@ -203,7 +203,7 @@ module.exports = (robot) ->
             author_name: ticket.fields.reporter.displayName + " (Reporter)"
             author_icon: "#{ticket.fields.issuetype.iconUrl}&format=png"
             text: ticket.fields.description
-            fallback: 'JIRA issue details are rendered in a Slack attachment which your client does not support :('
+            fallback: 'JIRA issue #{ticket.key} (#{ticket.fields.summary})'
             fields: ticket_fields
             mrkdwn_in: ['text', 'fields']
 
