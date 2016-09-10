@@ -190,9 +190,9 @@ module.exports = (robot) ->
         return if ticket is null
 
         ticket_fields = []
-        ticket_fields.push(title: 'Type', value:"#{ticket.fields.issuetype.name}", short: true) if ticket.fields?.issuetype?.name?
+        # ticket_fields.push(title: 'Type', value:"#{ticket.fields.issuetype.name}", short: true) if ticket.fields?.issuetype?.name?
         ticket_fields.push(title: 'Status', value:"#{ticket.fields.status.name}", short: true) if ticket.fields?.status?.name?
-        ticket_fields.push(title: 'Priority', value:"#{ticket.fields.prority.name}", short: true) if ticket.fields?.prority?.name?
+        # ticket_fields.push(title: 'Priority', value:"#{ticket.fields.prority.name}", short: true) if ticket.fields?.prority?.name?
         ticket_fields.push(title: 'Assignee', value:"#{ticket.fields.assignee.displayName}", short: true) if ticket.fields?.assignee?.displayName?
         ticket_fields.push(title: 'Due Date', value:"#{ticket.fields.duedate}", short: true) if ticket.fields?.duedate?
 
@@ -200,10 +200,10 @@ module.exports = (robot) ->
           message: msg.message
           content:
             title: "<#{process.env.HUBOT_JIRA_URL}/browse/#{ticket.key}|#{ticket.key}: #{ticket.fields.summary}>"
-            author_name: ticket.fields.reporter.displayName + " (Reporter)"
-            author_icon: "#{ticket.fields.issuetype.iconUrl}&format=png"
-            text: ticket.fields.description
-            fallback: 'JIRA issue #{ticket.key} (#{ticket.fields.summary})'
+            # author_name: ticket.fields.reporter.displayName + " (Reporter)"
+            # author_icon: "#{ticket.fields.issuetype.iconUrl}&format=png"
+            text: ticket.fields.description.replace('h1. Problem Overview','').substring(0,150)+"..."
+            fallback: "JIRA issue [#{ticket.key}] #{ticket.fields.summary} (#{process.env.HUBOT_JIRA_URL}/browse/#{ticket.key})"
             fields: ticket_fields
             mrkdwn_in: ['text', 'fields']
 
