@@ -202,7 +202,7 @@ module.exports = (robot) ->
             title: "<#{process.env.HUBOT_JIRA_URL}/browse/#{ticket.key}|#{ticket.key}: #{ticket.fields.summary}>"
             # author_name: ticket.fields.reporter.displayName + " (Reporter)"
             # author_icon: "#{ticket.fields.issuetype.iconUrl}&format=png"
-            text: ticket.fields.description.replace('h1. Problem Overview','').substring(0,150)+"..."
+            text: ticket.fields.description.replace(/h\d{1}. (Overview|Problem Overview|Success Criteria)/,'').substring(0,150)+"..."
             fallback: "JIRA issue [#{ticket.key}] #{ticket.fields.summary} (#{process.env.HUBOT_JIRA_URL}/browse/#{ticket.key})"
             fields: ticket_fields
             mrkdwn_in: ['text', 'fields']
